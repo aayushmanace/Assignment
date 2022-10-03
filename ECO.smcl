@@ -1,0 +1,147 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\aayus\OneDrive\Documents\ECO.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}23 Aug 2022, 22:19:56
+
+{com}. bcuse bwght
+
+{txt}Contains data from {res}http://fmwww.bc.edu/ec-p/data/wooldridge/bwght.dta
+{txt}  obs:{res}         1,388                          
+{txt} vars:{res}            14                          13 Jan 2000 17:33
+{txt} size:{res}        77,728                          
+{txt}{hline}
+              storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:faminc         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cigtax         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cigprice       }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:bwght          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:fatheduc       }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:motheduc       }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:parity         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:male           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:white          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:cigs           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:lbwght         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:bwghtlbs       }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:packs          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:lfaminc        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. 
+. regress bwght cigs motheduc
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,387
+{txt}{hline 13}{c +}{hline 34}   F(2, 1384)      = {res}    17.16
+{txt}       Model {c |} {res} 13904.0916         2  6952.04582   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  560570.65     1,384  405.036596   {txt}R-squared       ={res}    0.0242
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0228
+{txt}       Total {c |} {res} 574474.741     1,386   414.48394   {txt}Root MSE        =   {res} 20.126
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       bwght{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}cigs {c |}{col 14}{res}{space 2}-.4861707{col 26}{space 2} .0926242{col 37}{space 1}   -5.25{col 46}{space 3}0.000{col 54}{space 4}-.6678697{col 67}{space 3}-.3044717
+{txt}{space 4}motheduc {c |}{col 14}{res}{space 2} .3307666{col 26}{space 2} .2328371{col 37}{space 1}    1.42{col 46}{space 3}0.156{col 54}{space 4}-.1259852{col 67}{space 3} .7875185
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 115.4447{col 26}{space 2} 3.106523{col 37}{space 1}   37.16{col 46}{space 3}0.000{col 54}{space 4} 109.3507{col 67}{space 3} 121.5387
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. 
+. predict ui, residuals
+{txt}(1 missing value generated)
+
+{com}. 
+. regress cigs motheduc
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,387
+{txt}{hline 13}{c +}{hline 34}   F(1, 1385)      = {res}    66.38
+{txt}       Model {c |} {res} 2262.86002         1  2262.86002   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 47211.2323     1,385  34.0875323   {txt}R-squared       ={res}    0.0457
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0450
+{txt}       Total {c |} {res} 49474.0923     1,386  35.6955933   {txt}Root MSE        =   {res} 5.8385
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        cigs{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}motheduc {c |}{col 14}{res}{space 2}-.5376104{col 26}{space 2} .0659837{col 37}{space 1}   -8.15{col 46}{space 3}0.000{col 54}{space 4}-.6670492{col 67}{space 3}-.4081716
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.043119{col 26}{space 2} .8678311{col 37}{space 1}   10.42{col 46}{space 3}0.000{col 54}{space 4} 7.340714{col 67}{space 3} 10.74552
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. 
+. predict r1i, residuals
+{txt}(1 missing value generated)
+
+{com}. 
+. * mean(beta_cigs) = sum(r1i*bwght)/sum(r1i^2)
+
+. 
+. 
+. 
+. egen num = sum(bwght*r1i)
+
+. 
+. egen den = sum(r1i^2)
+
+. 
+. egen beta_cigs = num/den
+{err}unknown egen function num/den()
+{txt}{search r(133), local:r(133);}
+
+{com}. 
+. gen beta_cigs = num/den
+
+. 
+. display(beta_cigs)
+{res}-.48617074
+
+{com}. * var(beta_cigs) = (sigma_square/SST_cigs*(1-0.0457))
+
+. 
+. egen num1 = sum(ui^2)
+
+. 
+. display num1
+{res}560570.63
+
+{com}. 
+. gen sigma_sq = num1/1385
+
+. 
+. display sigma_sq
+{res}404.74414
+
+{com}. 
+. egen cigs_mean = mean(cigs)
+
+. 
+. gen t = (cigs-cigs_mean)^2
+
+. 
+. egen SST_cigs = sum(t)
+
+. 
+. gen var_beta_cigs = (sigma_sq/(SST_cigs*(1-0.0457)))
+
+. 
+. display var_beta_cigs
+{res}.00857195
+
+{com}. 
+. gen se_beta_cigs = sqrt(var_beta_cigs)
+
+. 
+. display se_beta_cigs
+{res}.09258481
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\aayus\OneDrive\Documents\ECO.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}23 Aug 2022, 22:20:42
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
